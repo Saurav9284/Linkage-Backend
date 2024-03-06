@@ -14,9 +14,19 @@ UserController.post('/signup', upload.single('avatar'), async (req,res) => {
 
     const { name , phone, email , password } = req.body
 
-    if(!name || !phone || !email || !password) {
-        return res.send({msg:'Fill all the details!'})
+    if(!name) {
+        return res.send({msg:'Name is required!'})
     }
+    if(!phone) {
+        return res.send({msg:'Phone number is required!'})
+    }
+    if(!email) {
+        return res.send({msg:'Email is required!'})
+    }
+    if(!password) {
+        return res.send({msg:'Password is required!'})
+    }
+
     try {
         const exist = await UserModel.findOne({ email })
         if(exist){
@@ -47,7 +57,7 @@ UserController.post('/signup', upload.single('avatar'), async (req,res) => {
     
                 } catch (error) {
                     console.log(error)
-                    res.send({msg:'Internal servser error'})
+                    res.send({msg:'Internal server error'})
                 }
             })
         });

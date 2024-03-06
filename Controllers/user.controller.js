@@ -14,7 +14,6 @@ UserController.post('/signup', async (req,res) => {
     if(!name || !phone || !email || !password){
         return res.send({msg:'Fill all the details!'})
     }
-
     try {
         const exist = await UserModel.findOne({ email })
         if(exist){

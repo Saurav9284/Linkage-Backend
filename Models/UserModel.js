@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    avatar: { type: String, required: true },
+    avatar: { type: String},
     phone: {
         type: String,
         validate: {
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
             validator: function(v) {
                 return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/.test(v); 
             },
-            message: props => `Password must contain at least 8 characters, one lowercase letter, one uppercase letter, one digit, and one special character`
+            message: props => `${props.value} is not a valid password. It must contain at least 8 characters, one lowercase letter, one uppercase letter, one digit, and one special character.`
         }
     }
 });

@@ -11,9 +11,9 @@ const UserController = express.Router()
 
 UserController.post('/signup', upload.single('avatar'), async (req,res) => {
 
-    const {name,phone,email,password} = req.body
+    const { name , phone, email , password } = req.body
 
-    if(!name || !phone || !email || !password){
+    if(!name || !phone || !email || !password) {
         return res.send({msg:'Fill all the details!'})
     }
     try {
@@ -27,8 +27,10 @@ UserController.post('/signup', upload.single('avatar'), async (req,res) => {
                 return res.send({msg:'Internal server error'})
             }
              const avatar = result.secure_url;
-             bcrypt.hash(password,5, async function(err,hash){
-                if(err){
+
+             bcrypt.hash(password,5, async function(err,hash) {
+
+                if(err) {
                     return res.send({msg:``})
                 }
                 try {

@@ -1,9 +1,8 @@
 const express = require('express')
 const cors = require('cors')
-require('dotenv').config();
+const {connection,PORT} = require('./Config/db')
 
 const app = express();
-const PORT = process.env.PORT
 
 app.use(express.json())
 app.use(cors())
@@ -12,6 +11,12 @@ app.get('/',(req,res)=> {
     res.send({msg:'API is live'})
 })
 
-app.listen(PORT,()=>{
+app.listen(PORT, async ()=>{
+    try {
+        await connection
+        console.log('Connected to mongoDB')
+    } catch (error) {
+        console.log(error)
+    }
     console.log(`listening on PORT: ${PORT}`)
 })

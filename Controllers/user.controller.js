@@ -2,7 +2,7 @@ const express = require('express')
 const UserModel = require('../Models/UserModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const upload = require('../Utils/multer')
+const {upload} = require('../Utils/multer')
 const cloudinary = require('../Utils/cloudinary')
 const {JWT_SECRET} = require('../Config/db')
 

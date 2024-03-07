@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const {connection,PORT} = require('./Config/db')
 const UserController = require('./Controllers/user.controller')
+const PostController = require('./Controllers/post.controller')
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get('/',(req,res)=> {
 })
 
 app.use('/user', UserController)
+app.use('/post',PostController)
 
 app.listen(PORT, async ()=>{
     try {

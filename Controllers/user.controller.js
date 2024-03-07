@@ -29,10 +29,12 @@ UserController.post('/signup', upload.single('avatar'), async (req,res) => {
     }
 
     try {
-        const exist = await UserModel.findOne({ email })
+        const exist = await UserModel.findOne({ email });
+
         if(exist){
             return res.send({msg:'User already exist wih this email, try another!'})
         }
+
         cloudinary.uploader.upload(req.file.path, function(error, result) {
             
             if(error){
@@ -70,6 +72,9 @@ UserController.post('/signup', upload.single('avatar'), async (req,res) => {
     }
 });
 
+
+
+// Login 
 
 UserController.post('/login', async (req,res) => {
 

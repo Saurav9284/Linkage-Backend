@@ -5,6 +5,8 @@ const cloudinary = require('../Utils/cloudinary')
 
 const PostController = express.Router();
 
+// Get all
+
 PostController.get('/', async (req,res) => {
     try {
         const posts = await PostModel.find();
@@ -14,6 +16,8 @@ PostController.get('/', async (req,res) => {
         console.log(error)
     }
 })
+
+// Create post
 
 PostController.post('/', uploadpost.single('media'), async (req, res) => {
     const { description } = req.body;

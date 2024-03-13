@@ -3,6 +3,7 @@ const PostModel = require('../Models/PostModel')
 const {uploadpost} = require('../Utils/multer')
 const cloudinary = require('../Utils/cloudinary')
 
+
 const PostController = express.Router();
 
 // Get all

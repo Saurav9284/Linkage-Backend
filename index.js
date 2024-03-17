@@ -4,6 +4,7 @@ const {connection,PORT} = require('./Config/db')
 const UserController = require('./Controllers/user.controller')
 const PostController = require('./Controllers/post.controller')
 
+
 const app = express();
 
 app.use(express.json())

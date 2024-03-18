@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 // impoting from dotenv file
 
+
 const connection = mongoose.connect(process.env.MONGO_URI)
 
 const PORT = process.env.PORT
